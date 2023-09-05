@@ -18,9 +18,35 @@ class _HomePageState extends State<HomePage> {
   int selectedWidth = 10;
   int selectedColorIndex = 0;
 
-  //
-  // int sliderValue = 5;
   int sliderValueDoted = 1;
+  Icon selectedIcon = const Icon(
+    CupertinoIcons.pencil_outline,
+    color: Colors.blue,
+    size: 55,
+  );
+
+  List<Icon> icons = [
+    const Icon(
+      CupertinoIcons.pencil_outline,
+      color: Colors.blue,
+      size: 55,
+    ),
+    const Icon(
+      CupertinoIcons.circle,
+      color: Colors.blue,
+      size: 55,
+    ),
+    const Icon(
+      CupertinoIcons.rectangle,
+      color: Colors.blue,
+      size: 55,
+    ),
+    const Icon(
+      CupertinoIcons.triangle,
+      color: Colors.blue,
+      size: 55,
+    ),
+  ];
 
   List<int> stroke = [
     ...List.generate(11, (sliderValueDoted) => sliderValueDoted * 5),
@@ -117,7 +143,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Positioned(
-            left: size.width - 1000,
+            left: size.width - 1450,
             top: 10,
             child: Row(
               children: [
@@ -157,12 +183,12 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                 ),
-                                Text(
+                                const Text(
                                   textAlign: TextAlign.center,
                                   "Active\nColor",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    color: selectedColor,
+                                    color: Colors.blue,
                                   ),
                                 ),
                               ],
@@ -256,7 +282,7 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 ),
-                SizedBox(width: 30),
+                const SizedBox(width: 30),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -294,12 +320,12 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                 ),
-                                Text(
+                                const Text(
                                   textAlign: TextAlign.center,
                                   "Stroke width",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    color: selectedColor,
+                                    color: Colors.blue,
                                   ),
                                 ),
                               ],
@@ -346,12 +372,83 @@ class _HomePageState extends State<HomePage> {
                       ],
                     )
                   ],
+                ),
+                const SizedBox(width: 30),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Shape",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: 80,
+                            height: 110,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(Radius.circular(15)),
+                                  border: Border.all(color: Colors.blue, width: 3)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  SizedBox(
+                                    width: 55,
+                                    height: 55,
+                                    child: Expanded(child: selectedIcon),
+                                  ),
+                                  const Text(
+                                    "Active Shape",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: List.generate(
+                            icons.length,
+                                (index) => Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Expanded(
+                                child: _buildIconsChose(
+                                  icons: icons[index],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
                 )
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+  Widget _buildIconsChose({required Icon icons}) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          selectedIcon = icons;
+        });
+      },
+      child: Expanded(child: icons),
     );
   }
 
