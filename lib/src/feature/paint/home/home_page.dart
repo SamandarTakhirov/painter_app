@@ -16,9 +16,11 @@ class _HomePageState extends State<HomePage> {
   List<LineData> draw = [];
   Color selectedColor = Colors.red;
   int selectedWidth = 10;
+  int selectedSize = 10;
   int selectedColorIndex = 0;
-
+  int fontSize = 10;
   int sliderValueDoted = 1;
+
   Icon selectedIcon = const Icon(
     CupertinoIcons.pencil_outline,
     color: Colors.blue,
@@ -49,6 +51,10 @@ class _HomePageState extends State<HomePage> {
   ];
 
   List<int> stroke = [
+    ...List.generate(11, (sliderValueDoted) => sliderValueDoted * 5),
+  ];
+
+  List<int> fontSizes = [
     ...List.generate(11, (sliderValueDoted) => sliderValueDoted * 5),
   ];
 
@@ -143,7 +149,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Positioned(
-            left: size.width - 1450,
+            left: size.width - 1650,
             top: 10,
             child: Row(
               children: [
@@ -164,13 +170,12 @@ class _HomePageState extends State<HomePage> {
                           height: 110,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(15)),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(15)),
                                 border:
-                                Border.all(color: Colors.blue, width: 3)),
+                                    Border.all(color: Colors.blue, width: 3)),
                             child: Column(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(
                                   width: 55,
@@ -204,24 +209,25 @@ class _HomePageState extends State<HomePage> {
                                   .getRange(0, 6)
                                   .map<Widget>(
                                     (e) => Padding(
-                                  padding: const EdgeInsets.all(3.0),
-                                  child: GestureDetector(
-                                    onTap: () => changeColor(e),
-                                    child: CircleAvatar(
-                                      backgroundColor: selectedColorIndex == e.index
-                                          ? Colors.black54
-                                          : const Color(0x00000000),
-                                      radius: 16,
-                                      child: Center(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: GestureDetector(
+                                        onTap: () => changeColor(e),
                                         child: CircleAvatar(
-                                          radius: 13,
-                                          backgroundColor: e.color,
+                                          backgroundColor:
+                                              selectedColorIndex == e.index
+                                                  ? Colors.black54
+                                                  : const Color(0x00000000),
+                                          radius: 16,
+                                          child: Center(
+                                            child: CircleAvatar(
+                                              radius: 13,
+                                              backgroundColor: e.color,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              )
+                                  )
                                   .toList(growable: false),
                             ),
                             Row(
@@ -230,24 +236,25 @@ class _HomePageState extends State<HomePage> {
                                   .getRange(6, 12)
                                   .map<Widget>(
                                     (e) => Padding(
-                                  padding: const EdgeInsets.all(3.0),
-                                  child: GestureDetector(
-                                    onTap: () => changeColor(e),
-                                    child: CircleAvatar(
-                                      backgroundColor: selectedColorIndex == e.index
-                                          ? Colors.black54
-                                          : const Color(0x00000000),
-                                      radius: 16,
-                                      child: Center(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: GestureDetector(
+                                        onTap: () => changeColor(e),
                                         child: CircleAvatar(
-                                          radius: 13,
-                                          backgroundColor: e.color,
+                                          backgroundColor:
+                                              selectedColorIndex == e.index
+                                                  ? Colors.black54
+                                                  : const Color(0x00000000),
+                                          radius: 16,
+                                          child: Center(
+                                            child: CircleAvatar(
+                                              radius: 13,
+                                              backgroundColor: e.color,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              )
+                                  )
                                   .toList(growable: false),
                             ),
                             Row(
@@ -256,24 +263,25 @@ class _HomePageState extends State<HomePage> {
                                   .getRange(12, 18)
                                   .map<Widget>(
                                     (e) => Padding(
-                                  padding: const EdgeInsets.all(3.0),
-                                  child: GestureDetector(
-                                    onTap: () => changeColor(e),
-                                    child: CircleAvatar(
-                                      backgroundColor: selectedColorIndex == e.index
-                                          ? Colors.black54
-                                          : const Color(0x00000000),
-                                      radius: 16,
-                                      child: Center(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: GestureDetector(
+                                        onTap: () => changeColor(e),
                                         child: CircleAvatar(
-                                          radius: 13,
-                                          backgroundColor: e.color,
+                                          backgroundColor:
+                                              selectedColorIndex == e.index
+                                                  ? Colors.black54
+                                                  : const Color(0x00000000),
+                                          radius: 16,
+                                          child: Center(
+                                            child: CircleAvatar(
+                                              radius: 13,
+                                              backgroundColor: e.color,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              )
+                                  )
                                   .toList(growable: false),
                             ),
                           ],
@@ -301,13 +309,12 @@ class _HomePageState extends State<HomePage> {
                           height: 110,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(15)),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(15)),
                                 border:
-                                Border.all(color: Colors.blue, width: 3)),
+                                    Border.all(color: Colors.blue, width: 3)),
                             child: Column(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(
                                   width: selectedWidth.toDouble(),
@@ -338,7 +345,7 @@ class _HomePageState extends State<HomePage> {
                             Row(
                               children: List.generate(
                                 stroke.length,
-                                    (index) {
+                                (index) {
                                   return Padding(
                                     padding: const EdgeInsets.all(2.0),
                                     child: _buildStrokeChoose(
@@ -360,7 +367,7 @@ class _HomePageState extends State<HomePage> {
                                 divisions: 10,
                                 onChanged: (value) {
                                   setState(
-                                        () {
+                                    () {
                                       selectedWidth = value.toInt();
                                     },
                                   );
@@ -394,10 +401,13 @@ class _HomePageState extends State<HomePage> {
                             height: 110,
                             child: DecoratedBox(
                               decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.all(Radius.circular(15)),
-                                  border: Border.all(color: Colors.blue, width: 3)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(15)),
+                                  border:
+                                      Border.all(color: Colors.blue, width: 3)),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   SizedBox(
                                     width: 55,
@@ -420,7 +430,7 @@ class _HomePageState extends State<HomePage> {
                         Row(
                           children: List.generate(
                             icons.length,
-                                (index) => Padding(
+                            (index) => Padding(
                               padding: const EdgeInsets.all(3.0),
                               child: Expanded(
                                 child: _buildIconsChose(
@@ -433,6 +443,113 @@ class _HomePageState extends State<HomePage> {
                       ],
                     )
                   ],
+                ),
+                const SizedBox(width: 30),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Write Text",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: 80,
+                            height: 110,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(15)),
+                                  border:
+                                      Border.all(color: Colors.blue, width: 3)),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  SizedBox(
+                                    width: 55,
+                                    height: 55,
+                                    child: Center(
+                                      child: Text(
+                                        "A",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: fontSize.toDouble(),
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const Text(
+                                    "Text\nSize",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(CupertinoIcons.text_alignleft),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(CupertinoIcons.text_aligncenter),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(CupertinoIcons.text_alignright),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(CupertinoIcons.text_justify),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(CupertinoIcons.textformat),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            SizedBox(
+                              width: 250,
+                              child: Slider(
+                                value: fontSize.toDouble(),
+                                max: 50,
+                                min: 10,
+                                label: selectedSize.toString(),
+                                activeColor: Colors.blue,
+                                divisions: 10,
+                                onChanged: (value) {
+                                  setState(
+                                    () {
+                                      fontSize = value.toInt();
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    )
+                  ],
                 )
               ],
             ),
@@ -441,6 +558,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
   Widget _buildIconsChose({required Icon icons}) {
     return InkWell(
       onTap: () {
